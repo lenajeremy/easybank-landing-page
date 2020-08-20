@@ -1,0 +1,348 @@
+/* Important Variables */
+:root{
+  --primaryDarkBlue: hsl(233, 26%, 24%);
+  --primaryLimeGreen: hsl(136, 65%, 51%);
+  --primaryBrightCyan: hsl(192, 70%, 51%);
+  --neutralGrayishBlue: hsl(233, 8%, 62%);
+  --neutralLightGrayishBlue: hsl(220, 16%, 96%);
+  --veryLightGray: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --primarygradient: linear-gradient(to right, var(--primaryLimeGreen), var(--primaryBrightCyan));
+}
+@keyframes toggleham{
+  0%{
+    transform: rotate(45deg);
+    display: none;
+    opacity: 0;
+  }
+  100%{
+    transform: rotate(0);
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes toggleclose{
+  0%{
+    transform: rotate(-45deg);
+    display: none;
+    opacity: 0;
+  }
+  100%{
+    transform: rotate(0);
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes overlay{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.toggle-out{
+  animation: toggle 0.5s ease;
+}
+/* Reset Default Styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+}
+.wrapper{
+    width: 80%;
+    margin: 0 auto;
+}
+/* Header Styles */
+header{
+  z-index: 5;
+  background: white;
+  width: 100%;
+  position: absolute;
+  transition: all 0.5s;
+}
+header .wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+h1, h2, h3, h4, h5, h6{
+  font-weight: 300;
+}
+header ul{
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+header ul li{
+  list-style: none;
+  margin-right: 20px;
+  position: relative;
+}
+header ul li:last-child{
+  margin: 0;
+}
+header ul li a{
+  font-size: 14px;
+  line-height: 100%;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+  padding-bottom: 8px;
+  transition: border 0.5s ease;
+  border-bottom: 3px solid transparent;
+}
+header ul li a:hover{
+  text-decoration: none;
+  color: black;
+  border-color: var(--primaryLimeGreen);
+}
+.btn-grad{
+  background: var(--primarygradient);
+  padding: 10px;
+  font-size: 14px;
+  color: white;
+  width: 170px;
+  font-weight: 500;
+  transition: all 300ms;
+}
+.btn-grad:hover{
+  color: white;
+  opacity: 0.6;
+}
+.toggle{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: none;
+}
+.toggle img{
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.toggle img:not(#close){
+  height: 80%;
+}
+.first-col{
+  width: 80%;
+}
+.first-col p{
+  color: var(--neutralGrayishBlue);
+}
+.cols{
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.images{
+  position: absolute;
+  left: -15%;
+  top: -34%;
+}
+#mockup{
+  left: 15%;
+  top: -15%;
+}
+@media screen and (max-width: 768px){
+  .toggle{
+    display: block;
+  }
+  header ul{
+    display: none;
+  }
+  #close{
+    display: none;
+  }
+  header ul.isopen{
+    border-radius: 10px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.89);
+    top: 60px;
+  }
+  header ul li{
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  header ul li a {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .btn-grad.inheader{
+    display: none;
+  }
+  .section1 .row{
+    flex-direction: column-reverse;
+  }
+  .images{
+    transform: scale(0.7);
+    position: relative;
+  }
+  .cols:nth-of-type(2){
+    max-height: 40vh;
+  }
+  .first-col{
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .first-col h1{
+    font-size: 45px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  .first-col p{
+    line-height: 1.7em;
+    letter-spacing: 0.03em;
+    margin-bottom: 40px;
+  }
+  .overlay.done{
+    animation: overlay 0.5s ease;
+    width: 100vw;
+    height: 70vh;
+    z-index: 1;
+    background-image: linear-gradient(to bottom, var(--primaryBrightCyan) , rgba(255, 255, 255, 0.356));
+    position: absolute;
+  }
+  #bg{
+    transform: translateX(-21%) translateY(-15%) scale(0.75);
+    top: 50px;
+  }
+  #mockup{
+    transform: translateX(-195%) scale(0.6);
+    left: 10%;
+  }
+  .section2 .whychooseus{
+    width: 100%!important;
+  }
+  .cardimage img{
+    height: auto;
+  }
+}
+.section1{
+  padding-top: 75px;
+}
+.section2{
+  background: var(--neutralLightGrayishBlue);
+  min-height: 85vh;
+  display: flex;
+}
+.section2 .wrapper{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.section2 p, .section2 h5{
+  color: var(--neutralGrayishBlue)
+}
+.section2 img{
+  transform: scale(0.9);
+}
+.section2 .whychooseus{
+  width: 55%;
+}
+.ourcard{
+  border-radius: 5px;
+  margin-bottom: 30px;
+  /* height: 150px; */
+}
+.cardimage img{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+@media screen and (min-width: 800px){
+  .cardimage img:first-child{
+    height: 165px;
+    width: 100%;
+  }
+}
+.cardtext{
+  padding: 15px 20px;
+}
+.cardtext small{
+  color: var(--neutralGrayishBlue);
+  font-size: 70%;
+}
+.cardtext p{
+  font-size: 90%;
+  color: var(--neutralGrayishBlue);
+  margin-bottom: 0;
+}
+.cardtext h6{
+  cursor: pointer;
+  transition: color 0.5s ease;
+  font-weight: 300;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.cardtext h6:hover{
+  color: var(--primaryLimeGreen);
+}
+.socials img{
+  margin-right: 7px;
+  display: inline-block;
+}
+/* finalArea */
+.finalsection{
+  background-color: var(--primaryDarkBlue);
+  color: white;
+  min-height: 30vh;
+}
+.logofooter{
+  margin-bottom: 20%;
+}
+.links{
+  padding-right: 0;  
+}
+.links ul li{
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+.easybank{
+  text-align: right;
+}
+.easybank p{
+  font-size: 90%;
+  margin-top: 30px;
+  color: var(--neutralGrayishBlue)
+}
+@media screen and (max-width: 768px){
+  .finalsection .row{
+    text-align: center;
+  }
+  .logofooter{
+    margin-bottom: 30px;
+  }
+  .socials{
+    margin-bottom: 20px;
+  }
+  .links:nth-of-type(2){
+    margin-top: 30px
+  }
+  .easybank{
+    margin-top: 40px;
+    text-align: center;
+  }
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
